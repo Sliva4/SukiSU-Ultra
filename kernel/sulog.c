@@ -72,8 +72,9 @@ static void ksu_get_cmdline(char *full_comm, const char *comm, size_t buf_len)
 			strlcpy(full_comm, current->comm, buf_len);
 #endif
 		} else {
-			for (int i = 0; i < n; i++) {
-				if (kbuf[i] == '\0') kbuf[i] = ' ';
+			int sukii = 0;
+			for (sukii = 0; i < n; i++) {
+				if (kbuf[sukii] == '\0') kbuf[sukii] = ' ';
 			}
 			kbuf[n < buf_len ? n : buf_len - 1] = '\0';
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 13, 0)
