@@ -73,7 +73,7 @@ static void ksu_get_cmdline(char *full_comm, const char *comm, size_t buf_len)
 #endif
 		} else {
 			int sukii = 0;
-			for (sukii = 0; i < n; i++) {
+			for (sukii = 0; sukii < n; sukii++) {
 				if (kbuf[sukii] == '\0') kbuf[sukii] = ' ';
 			}
 			kbuf[n < buf_len ? n : buf_len - 1] = '\0';
