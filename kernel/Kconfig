@@ -2,7 +2,7 @@ menu "KernelSU"
 
 config KSU
 	  tristate "KernelSU function support"
-	  default y
+	  default n
 	  help
 	    Enable kernel-level root privileges on Android System.
 	    To compile as a module, choose M here: the
@@ -25,7 +25,7 @@ config KSU_MULTI_MANAGER_SUPPORT
 config KSU_THRONE_TRACKER_LEGACY
 	bool "Use legacy throne tracker (packages.list scanning)"
 	depends on KSU
-	default n
+	default y
 	help
 	  Use legacy throne tracker that scans packages.list for app UIDs.
 	  This is kept for Ultra-Legacy Linux 4.4-3.X kernels which are prone to deadlocks.
@@ -34,7 +34,7 @@ config KSU_THRONE_TRACKER_LEGACY
 config KSU_MANUAL_SU
 	bool "Use manual su"
 	depends on KSU
-	default y
+	default n
 	help
 	  Use manual su and authorize the corresponding command line and application via prctl
 
@@ -68,7 +68,7 @@ config KPM
 choice
     prompt "KernelSU hook type"
     depends on KSU
-    default KSU_KPROBES_HOOK
+    default KSU_MANUAL_HOOK
     help
       Hook type for KernelSU
 
@@ -95,8 +95,6 @@ endchoice
 menu "KernelSU - SUSFS"
 config KSU_SUSFS
     bool "KernelSU addon - SUSFS"
-    depends on KSU
-    depends on THREAD_INFO_IN_TASK
     default y
     help
       Patch and Enable SUSFS to kernel with KernelSU.
