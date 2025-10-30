@@ -911,7 +911,7 @@ int ksu_handle_prctl(int option, unsigned long arg2, unsigned long arg3,
 			pr_info("susfs: copy_to_user() failed\n");
 		return 0;
 	}
-	if (arg2 == CMD_SUSFS_ADD_SUS_PATH_LOOP) {
+	/*if (arg2 == CMD_SUSFS_ADD_SUS_PATH_LOOP) {
 		susfs_cmd_err = susfs_add_sus_path_loop((struct st_susfs_sus_path __user*)arg3);
 		pr_info("susfs: CMD_SUSFS_ADD_SUS_PATH_LOOP -> ret: %d\n", susfs_cmd_err);
 		if (copy_to_user((void __user*)arg5, &susfs_cmd_err, sizeof(susfs_cmd_err)))
@@ -925,6 +925,7 @@ int ksu_handle_prctl(int option, unsigned long arg2, unsigned long arg3,
 			pr_info("susfs: copy_to_user() failed\n");
 		return 0;
 	}
+	
 	if (arg2 == CMD_SUSFS_SET_SDCARD_ROOT_PATH) {
 		susfs_cmd_err = susfs_set_i_state_on_external_dir((char __user*)arg3, CMD_SUSFS_SET_SDCARD_ROOT_PATH);
 		pr_info("susfs: CMD_SUSFS_SET_SDCARD_ROOT_PATH -> ret: %d\n", susfs_cmd_err);
@@ -932,6 +933,7 @@ int ksu_handle_prctl(int option, unsigned long arg2, unsigned long arg3,
 			pr_info("susfs: copy_to_user() failed\n");
 		return 0;
 	}
+		*/
 #endif //#ifdef CONFIG_KSU_SUSFS_SUS_PATH
 #ifdef CONFIG_KSU_SUSFS_SUS_MOUNT
 	if (arg2 == CMD_SUSFS_ADD_SUS_MOUNT) {
@@ -941,7 +943,7 @@ int ksu_handle_prctl(int option, unsigned long arg2, unsigned long arg3,
 			pr_info("susfs: copy_to_user() failed\n");
 		return 0;
 	}
-	if (arg2 == CMD_SUSFS_HIDE_SUS_MNTS_FOR_ALL_PROCS) {
+	/*if (arg2 == CMD_SUSFS_HIDE_SUS_MNTS_FOR_ALL_PROCS) {
 		if (arg3 != 0 && arg3 != 1) {
 			pr_err("susfs: CMD_SUSFS_HIDE_SUS_MNTS_FOR_ALL_PROCS -> arg3 can only be 0 or 1\n");
 			return 0;
@@ -962,7 +964,7 @@ int ksu_handle_prctl(int option, unsigned long arg2, unsigned long arg3,
 		if (copy_to_user((void __user*)arg5, &susfs_cmd_err, sizeof(susfs_cmd_err)))
 			pr_info("susfs: copy_to_user() failed\n");
 		return 0;
-	}
+	}*/
 #endif //#ifdef CONFIG_KSU_SUSFS_SUS_MOUNT
 #ifdef CONFIG_KSU_SUSFS_SUS_KSTAT
 	if (arg2 == CMD_SUSFS_ADD_SUS_KSTAT) {
@@ -1102,7 +1104,7 @@ int ksu_handle_prctl(int option, unsigned long arg2, unsigned long arg3,
 		return 0;
 	}
 #endif // #ifdef CONFIG_KSU_SUSFS_SUS_MAP
-	if (arg2 == CMD_SUSFS_ENABLE_AVC_LOG_SPOOFING) {
+	/*if (arg2 == CMD_SUSFS_ENABLE_AVC_LOG_SPOOFING) {
 		if (arg3 != 0 && arg3 != 1) {
 			pr_err("susfs: CMD_SUSFS_ENABLE_AVC_LOG_SPOOFING -> arg3 can only be 0 or 1\n");
 			return 0;
@@ -1111,7 +1113,7 @@ int ksu_handle_prctl(int option, unsigned long arg2, unsigned long arg3,
 		if (copy_to_user((void __user*)arg5, &susfs_cmd_err, sizeof(susfs_cmd_err)))
 			pr_info("susfs: copy_to_user() failed\n");
 		return 0;
-	}
+	}*/
 #endif //#ifdef CONFIG_KSU_SUSFS
 
 	// all other cmds are for 'root manager'

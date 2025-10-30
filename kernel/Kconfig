@@ -188,7 +188,6 @@ config KSU_SUSFS_HIDE_KSU_SUSFS_SYMBOLS
 
 config KSU_SUSFS_SPOOF_CMDLINE_OR_BOOTCONFIG
     bool "Enable to spoof /proc/bootconfig (gki) or /proc/cmdline (non-gki)"
-    depends on KSU_SUSFS
     default y
     help
       - Spoof the output of /proc/bootconfig (gki) or /proc/cmdline (non-gki) with a user-defined file.
@@ -217,8 +216,7 @@ config KSU_SUSFS_SUS_SU
 
 config KSU_SUSFS_SUS_MAP
     bool "Enable to hide some mmapped real file from different proc maps interfaces"
-    depends on KSU_SUSFS
-    default y
+    default n
     help
       - Allow hiding mmapped real file from /proc/<pid>/[maps|smaps|smaps_rollup|map_files|mem|pagemap]
       - It does NOT support hiding for anon memory.
